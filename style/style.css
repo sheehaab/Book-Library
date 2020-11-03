@@ -5,5 +5,24 @@ body{
 
 main{
 	height:100vh;
-	background-color: lightgreen;
+	background-color: #e3e9ff;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+main .open-btn-class{
+	width:45%;
+	background-color: #af7eeb;
+	border:none;
+	height:10%;
+	margin-bottom:20px;
+	color:#ffffff;
+}
+
+main .book-obj{
+	height:70%;
+	width:45%;
+	background-color: #ffffff;
 }
