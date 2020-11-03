@@ -69,9 +69,9 @@ function display(library){
 		
 
 		//putting the div of the authon and pageNum and book in the container
-		disBook.appendChild(authorNameInDom);
-		disBook.appendChild(pageNumInDom);
 		disBook.appendChild(bookInDom);
+		disBook.appendChild(pageNumInDom);
+		disBook.appendChild(authorNameInDom);
 		disBook.appendChild(cancel);
 
 		//putting the heading of the three 

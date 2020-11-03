@@ -12,6 +12,38 @@ main{
 	align-items: center;
 }
 
+.form-class{
+	width: 15%;
+	background-color: #FFF;
+	border:1px solid #00000020;
+	position: absolute;
+	top: 24%;
+	left: 42%;
+	-webkit-box-shadow: 0px 0px 13px 0px rgba(50, 50, 50, 0.16);
+	-moz-box-shadow:    0px 0px 13px 0px rgba(50, 50, 50, 0.16);
+	box-shadow:         0px 0px 13px 0px rgba(50, 50, 50, 0.16);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding:10px;
+}
+
+.form-class label{
+	display: flex;
+	flex-direction: column;	
+	margin-bottom: 20px;
+	justify-content: center;
+	align-items: center;
+}
+
+.form-class button{
+	background-color: #af7eeb;
+	border:none;
+	height:30px;
+	color:#fff;
+	font-weight: bold;
+}
+
 main .open-btn-class{
 	width:45%;
 	background-color: #af7eeb;
@@ -24,6 +56,7 @@ main .open-btn-class{
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	cursor: pointer;
 }
 
 
@@ -32,43 +65,56 @@ main .book-obj{
 	width:45%;
 	background-color: #ffffff;
 	overflow: auto;
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.28);
+	-moz-box-shadow:    0px 0px 5px 0px rgba(50, 50, 50, 0.28);
+	box-shadow:         0px 0px 5px 0px rgba(50, 50, 50, 0.28);
 }
 
 main .add-button{
 	background-color:#af7eeb;
 	border:none;
 	position: absolute;
-	bottom: 38px;
-	padding: 20px 30px;
+	bottom: 35px;
+	padding: 7px 15px;
 	color: #fff;
 	font-weight: bold;
 	font-size: 1.1em;
 	display: flex;
 	justify-content: space-around;
 	width:12%;
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.28);
+	-moz-box-shadow:    0px 0px 5px 0px rgba(50, 50, 50, 0.28);
+	box-shadow:         0px 0px 5px 0px rgba(50, 50, 50, 0.28);
+	cursor: pointer;
+
 }
 
 main .add-button:after{
 	content: '';
-	height: 65px;
-	width: 36px;
+	height: 39px;
+	width: 20px;
 	background-color: #af7eeb;
 	position: absolute;
-	right: -34px;
+	right: -19px;
 	top: 0px;
 	border-radius: 0 50px 50px 0;
+	box-shadow: 6px 0px 6px -3px rgba(50, 50, 50, 0.28)
 }
 
 main .add-button:before{
 	content: '';
-	height: 65px;
-	width: 36px;
+	height: 39px;
+	width: 20px;
 	background-color: #af7eeb;
 	position: absolute;
-	left: -34px;
+	left: -19px;
 	top: 0px;
 	border-radius: 50px 0 0 50px;
+	box-shadow: -6px 0px 6px -3px rgba(50, 50, 50, 0.28);
+
 }
+
+
 
 .book-style{
 
@@ -102,6 +148,15 @@ main .add-button:before{
 	border:none;
 	color:#939bbe;
 	font-size:1.2em;
+	cursor: pointer;
+}	
 
+
+.display-none{
+	display: none;
+}
+
+.display-block{
+	display: block;
 }
 
