@@ -62,7 +62,7 @@ function display(library){
 		const cancel = document.createElement('button');
 
 		//add the X in it
-		cancel.textContent = 'X';
+		cancel.innerHTML = "&times;";
 
 		//add style to it 
 		cancel.classList.add('exit')
