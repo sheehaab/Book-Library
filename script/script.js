@@ -1,5 +1,6 @@
 //the array to store all the book object in it
 let myLibrary = [];
+let index = 0;
 
 //the constructor of the book objects
 function Book(bookName,bookPages,bookAuthor){
@@ -12,13 +13,15 @@ function Book(bookName,bookPages,bookAuthor){
 function addBookToLibrary(name,pages,author){
 	let newBook = new Book(name,pages,author);
 	myLibrary.push(newBook);
+	display(myLibrary);
+
 }
 
 //declare the place I'll append the new books in it
 const parentBook = document.getElementById('parent-book');
 
 function display(library){ 	
-	myLibrary.forEach((book)=>{ 
+	
 		//create the main div that will contain all the info about the book
 		const disBook = document.createElement('div');
 		//crate the div that will divided the author name and page number and book title
@@ -51,9 +54,10 @@ function display(library){
 		pageTitle.classList.add('span-style');
 		bookTitle.classList.add('span-style');
 		//put the user input into the spans
-		authorTitle.innerHTML = book.bookAuthor;
-		pageTitle.textContent = book.bookPages;
-		bookTitle.textContent = book.bookName;
+		authorTitle.textContent = library[index].bookAuthor;
+		pageTitle.textContent = library[index].bookPages;
+		bookTitle.textContent = library[index].bookName;
+
 
 		//add style to the new created divs
 		disBook.classList.add('book-style');
@@ -87,16 +91,52 @@ function display(library){
 
 		//assing this container in the parent div in the actual HTML
 		parentBook.appendChild(disBook);
-
-	}) 
 }
 
-addBookToLibrary('shehab',220,'shehab ahmed');
+
+//Declration of the add button and the inner button in the form
+const form = document.getElementById('form');
+const add_btn = document.getElementById('add-btn');
+const exit_btn = document.getElementById('exit-btn');
+const addFormButton = document.getElementById('add-button');
+
+//when click the add button show the form 
+add_btn.addEventListener('click',function(){
+	form.classList.remove('display-none');
+	form.classList.add('display-block');
+	
+})
+
+//when click the exit button hide the form
+exit_btn.addEventListener('click',function(){
+	form.classList.add('display-none');
+	form.classList.remove('display-block');
+})
 
 
-console.log(myLibrary[1])
 
-display(myLibrary);
+const bookValue = document.getElementById('book-input');
+const pagesValue = document.getElementById('pages-input');
+const authorValue = document.getElementById('author-input');
+
+//when click on the add button that in the form 
+addFormButton.addEventListener('click',function(){
+
+	//this to fill the first index in the array to could fill the other index in the array
+	if(index === 0){
+		addBookToLibrary(bookValue.value,pagesValue.value,authorValue.value);
+	}else{
+		addBookToLibrary(bookValue.value,pagesValue.value,authorValue.value);
+	}	
+	bookValue.value = '';
+	pagesValue.value = '';
+	authorValue.value = '';
+	form.classList.add('display-none');
+	form.classList.remove('display-block');
+	index+=1;
+	
+
+})
 
 
 

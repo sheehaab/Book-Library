@@ -26,6 +26,26 @@ main{
 	flex-direction: column;
 	align-items: center;
 	padding:10px;
+	transition: .5s ease-in-out;
+}
+
+.form-class .exit-btn{
+	align-self: flex-end;
+	margin-bottom: 10px;
+	background: none;
+	border:none;
+	cursor: pointer;
+	font-size:1.2em;
+	border-radius: 50%;
+	color:#939bbe;
+	transition:.2s ease-in-out;
+
+}
+
+.form-class .exit-btn:hover{
+	background-color: #af7eeb;
+	color:#fff;
+	
 }
 
 .form-class label{
@@ -36,12 +56,13 @@ main{
 	align-items: center;
 }
 
-.form-class button{
+.form-class .add-btn{
 	background-color: #af7eeb;
 	border:none;
 	height:30px;
 	color:#fff;
 	font-weight: bold;
+	cursor: pointer;
 }
 
 main .open-btn-class{
@@ -153,10 +174,11 @@ main .add-button:before{
 
 
 .display-none{
-	display: none;
+	
+	transform: scale(0);
 }
 
 .display-block{
-	display: block;
+	transform: scale(1);
 }
 
