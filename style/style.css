@@ -167,10 +167,17 @@ main .add-button:before{
 .exit{
 	background: none;
 	border:none;
-	color:#939bbe;
-	font-size:1.2em;
 	cursor: pointer;
-}	
+	font-size:1.2em;
+	border-radius: 50%;
+	color:#939bbe;
+	transition:.2s ease-in-out;
+}
+
+.exit-hover{
+	background-color: #af7eeb;
+	color:#fff;
+}
 
 
 .display-none{
@@ -181,4 +188,6 @@ main .add-button:before{
 .display-block{
 	transform: scale(1);
 }
+
+
 

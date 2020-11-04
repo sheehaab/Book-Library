@@ -73,10 +73,18 @@ function display(library){
 		cancel.setAttribute('id','cancelBtn');
 
 		//add the X in it
-		cancel.textContent = 'X';
+		cancel.innerHTML = '&times;';
 
 		//add style to it 
 		cancel.classList.add('exit')
+
+		cancel.addEventListener('mouseout',function(){
+			cancel.classList.add('exit');
+			cancel.classList.remove('exit-hover');
+		})
+		cancel.addEventListener('mouseover',function(){
+			cancel.classList.add('exit-hover');
+		})
 
 
 		//putting the div of the authon and pageNum and book in the container
