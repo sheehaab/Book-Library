@@ -2,6 +2,9 @@
 let myLibrary = [];
 let index = 0;
 
+//declare the place I'll append the new books in it
+const parentBook = document.getElementById('parent-book');
+
 //the constructor of the book objects
 function Book(bookName,bookPages,bookAuthor){
 	this.bookName = bookName;
@@ -14,14 +17,13 @@ function addBookToLibrary(name,pages,author){
 	let newBook = new Book(name,pages,author);
 	myLibrary.push(newBook);
 	display(myLibrary);
-
+	myLibrary = [];
 }
 
-//declare the place I'll append the new books in it
-const parentBook = document.getElementById('parent-book');
+
 
 function display(library){ 	
-	
+	myLibrary.forEach((book)=>{ 
 		//create the main div that will contain all the info about the book
 		const disBook = document.createElement('div');
 		//crate the div that will divided the author name and page number and book title
@@ -54,10 +56,9 @@ function display(library){
 		pageTitle.classList.add('span-style');
 		bookTitle.classList.add('span-style');
 		//put the user input into the spans
-		authorTitle.textContent = library[index].bookAuthor;
-		pageTitle.textContent = library[index].bookPages;
-		bookTitle.textContent = library[index].bookName;
-
+		authorTitle.innerHTML = book.bookAuthor;
+		pageTitle.textContent = book.bookPages;
+		bookTitle.textContent = book.bookName;
 
 		//add style to the new created divs
 		disBook.classList.add('book-style');
@@ -66,16 +67,16 @@ function display(library){
 		const cancel = document.createElement('button');
 
 		//add the X in it
-		cancel.innerHTML = "&times;";
+		cancel.textContent = 'X';
 
 		//add style to it 
 		cancel.classList.add('exit')
-		
+
 
 		//putting the div of the authon and pageNum and book in the container
-		disBook.appendChild(bookInDom);
-		disBook.appendChild(pageNumInDom);
 		disBook.appendChild(authorNameInDom);
+		disBook.appendChild(pageNumInDom);
+		disBook.appendChild(bookInDom);
 		disBook.appendChild(cancel);
 
 		//putting the heading of the three 
@@ -91,7 +92,13 @@ function display(library){
 
 		//assing this container in the parent div in the actual HTML
 		parentBook.appendChild(disBook);
+
+		console.log(book)
+
+	}) 
+
 }
+
 
 
 //Declration of the add button and the inner button in the form
@@ -120,7 +127,8 @@ const pagesValue = document.getElementById('pages-input');
 const authorValue = document.getElementById('author-input');
 
 //when click on the add button that in the form 
-addFormButton.addEventListener('click',function(){
+addFormButton.addEventListener('click',function clicking(e){
+
 
 	//this to fill the first index in the array to could fill the other index in the array
 	if(index === 0){
@@ -134,8 +142,6 @@ addFormButton.addEventListener('click',function(){
 	form.classList.add('display-none');
 	form.classList.remove('display-block');
 	index+=1;
-	
-
 })
 
 
