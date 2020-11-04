@@ -2,6 +2,9 @@
 let myLibrary = [];
 let index = 0;
 
+//declare the place I'll append the new books in it
+const parentBook = document.getElementById('parent-book');
+
 //the constructor of the book objects
 function Book(bookName,bookPages,bookAuthor){
 	this.bookName = bookName;
@@ -14,11 +17,9 @@ function addBookToLibrary(name,pages,author){
 	let newBook = new Book(name,pages,author);
 	myLibrary.push(newBook);
 	display(myLibrary);
-
 }
 
-//declare the place I'll append the new books in it
-const parentBook = document.getElementById('parent-book');
+
 
 function display(library){ 	
 	
@@ -65,6 +66,8 @@ function display(library){
 		//create the cancel button 
 		const cancel = document.createElement('button');
 
+		//give it id to get the element in the out of this function
+		cancel.setAttribute('id','cancel-btn')
 		//add the X in it
 		cancel.innerHTML = "&times;";
 
@@ -91,7 +94,9 @@ function display(library){
 
 		//assing this container in the parent div in the actual HTML
 		parentBook.appendChild(disBook);
+		
 }
+
 
 
 //Declration of the add button and the inner button in the form
@@ -120,7 +125,8 @@ const pagesValue = document.getElementById('pages-input');
 const authorValue = document.getElementById('author-input');
 
 //when click on the add button that in the form 
-addFormButton.addEventListener('click',function(){
+addFormButton.addEventListener('click',function clicking(e){
+
 
 	//this to fill the first index in the array to could fill the other index in the array
 	if(index === 0){
@@ -134,8 +140,6 @@ addFormButton.addEventListener('click',function(){
 	form.classList.add('display-none');
 	form.classList.remove('display-block');
 	index+=1;
-	
-
 })
 
 
