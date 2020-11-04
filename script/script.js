@@ -17,15 +17,18 @@ function addBookToLibrary(name,pages,author){
 	let newBook = new Book(name,pages,author);
 	myLibrary.push(newBook);
 	display(myLibrary);
-	myLibrary = [];
 }
 
 
 
-function display(library){ 	
+function display(library){ 
+
+	removeAllNodes();
+
 	myLibrary.forEach((book)=>{ 
 		//create the main div that will contain all the info about the book
 		const disBook = document.createElement('div');
+		disBook.setAttribute('id','book-obj')
 		//crate the div that will divided the author name and page number and book title
 		const authorNameInDom = document.createElement('div');
 		const pageNumInDom = document.createElement('div');
@@ -66,6 +69,9 @@ function display(library){
 		//create the cancel button 
 		const cancel = document.createElement('button');
 
+		//put id to the cancel button to make it remove the books from library
+		cancel.setAttribute('id','cancelBtn');
+
 		//add the X in it
 		cancel.textContent = 'X';
 
@@ -91,13 +97,40 @@ function display(library){
 
 
 		//assing this container in the parent div in the actual HTML
-		parentBook.appendChild(disBook);
+		parentBook.appendChild(disBook); 
 
-	}) 
+
+	})
+	cancelButton();
 
 }
 
 
+function cancelButton(){
+	const allCancel = document.querySelectorAll('#cancelBtn');
+	allCancel.forEach((cancel)=>{
+		cancel.addEventListener('click',function(e){
+			e.target.parentElement.remove();
+			let bookName = e.target.parentNode.childNodes[2].lastChild.textContent;
+			let counter = 0;
+			for(let i=0;i<myLibrary.length;i++){
+				if(myLibrary[i].bookName === bookName){
+					myLibrary.splice(i,1);
+				}
+			}
+
+		})
+	})
+
+	
+}
+
+
+function removeAllNodes(){
+	while(parentBook.firstChild){
+		parentBook.removeChild(parentBook.firstChild);
+	}
+}
 
 
 //Declration of the add button and the inner button in the form
@@ -129,11 +162,7 @@ const authorValue = document.getElementById('author-input');
 addFormButton.addEventListener('click',function clicking(e){
 
 	//this to fill the first index in the array to could fill the other index in the array
-	if(index === 0){
-		addBookToLibrary(bookValue.value,pagesValue.value,authorValue.value);
-	}else{
-		addBookToLibrary(bookValue.value,pagesValue.value,authorValue.value);
-	}	
+	addBookToLibrary(bookValue.value,pagesValue.value,authorValue.value);
 	bookValue.value = '';
 	pagesValue.value = '';
 	authorValue.value = '';
@@ -141,6 +170,8 @@ addFormButton.addEventListener('click',function clicking(e){
 	form.classList.remove('display-block');
 	index+=1;
 })
+
+
 
 
 
