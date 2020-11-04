@@ -4,18 +4,23 @@ let myLibrary = [];
 //declare the place I'll append the new books in it
 const parentBook = document.getElementById('parent-book');
 
+
+
 //the constructor of the book objects
-function Book(bookName,bookPages,bookAuthor){
+function Book(bookName,bookPages,bookAuthor,read){
 	this.bookName = bookName;
 	this.bookPages = bookPages;
 	this.bookAuthor = bookAuthor;
+	this.read = read;
 }
 
 //adding the books obj to the myLibrary array
-function addBookToLibrary(name,pages,author){
-	let newBook = new Book(name,pages,author);
+function addBookToLibrary(name,pages,author,read){
+	let newBook = new Book(name,pages,author,read);
 	myLibrary.push(newBook);
 	display(myLibrary);
+checkValidate();
+
 }
 
 
@@ -65,6 +70,18 @@ function display(library){
 		//add style to the new created divs
 		disBook.classList.add('book-style');
 
+		//create the checkbox for read it or not 
+
+		const label = document.createElement('label');
+		const checkBox = document.createElement('input');
+		label.textContent = 'Read';
+		label.classList.add('label');
+		label.appendChild(checkBox);
+		checkBox.setAttribute('type','checkBox');
+		checkBox.classList.add('checkbox');
+		checkBox.setAttribute('id','javaScriptCheckBox');
+	
+
 		//create the cancel button 
 		const cancel = document.createElement('button');
 
@@ -90,6 +107,7 @@ function display(library){
 		disBook.appendChild(authorNameInDom);
 		disBook.appendChild(pageNumInDom);
 		disBook.appendChild(bookInDom);
+		disBook.appendChild(label);
 		disBook.appendChild(cancel);
 
 		//putting the heading of the three 
@@ -109,6 +127,8 @@ function display(library){
 	}) 
 	cancelButton();
 
+
+
 }
 
 
@@ -123,6 +143,7 @@ function cancelButton(){
 			for(let i=0;i<myLibrary.length;i++){
 				if(myLibrary[i].bookName === bookName){
 					myLibrary.splice(i,1);
+					break;
 				}
 			}
 
@@ -167,11 +188,43 @@ const bookValue = document.getElementById('book-input');
 const pagesValue = document.getElementById('pages-input');
 const authorValue = document.getElementById('author-input');
 const errorMsg = document.getElementById('msg');
+let readit;
+function checkValidate(){
+	const checkboxjs = document.querySelectorAll('#javaScriptCheckBox');
+
+		checkboxjs.forEach((check)=>{
+		check.addEventListener('click',function(e){
+				
+				if(check.checked === false){
+						let bookName = e.target.parentNode.parentNode.childNodes[2].lastChild.textContent;
+						for(let i=0;i<myLibrary.length;i++){
+							if(myLibrary[i].bookName === bookName){
+								myLibrary.read = false;
+								readit = check.checked = false;
+								console.log(check.checked);
+								break;
+							}
+					}
+				}else if(check.checked === true){
+						let bookName = e.target.parentNode.parentNode.childNodes[2].lastChild.textContent;
+						for(let i=0;i<myLibrary.length;i++){
+							if(myLibrary[i].bookName === bookName){
+								myLibrary.read = true;
+								readit = check.checked = true;
+								console.log(check.checked);
+								break;
+							}
+						}
+				}
+		})
+})
+}
 
 
 
 //when click on the add button that in the form 
-addFormButton.addEventListener('click',function clicking(e){
+addFormButton.addEventListener('click',function clicking(){
+
 	let bookVal = bookValue.value;
 	let pagesVal = pagesValue.value;
 	let authorVal = authorValue.value;
@@ -189,8 +242,8 @@ addFormButton.addEventListener('click',function clicking(e){
 		errorMsg.textContent = '*Pages must be a number';
 		return;
 	}else{
-		//this to fill the first index in the array to could fill the other index in the array
-		addBookToLibrary(bookVal,pagesVal,authorVal);
+		errorMsg.textContent = '';
+		addBookToLibrary(bookVal,pagesVal,authorVal,readit);
 		bookValue.value = '';
 		pagesValue.value = '';
 		authorValue.value = '';
@@ -198,6 +251,7 @@ addFormButton.addEventListener('click',function clicking(e){
 		form.classList.remove('display-block');
 	}
 })
+
 
 
 

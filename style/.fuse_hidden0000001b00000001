@@ -191,27 +191,15 @@ main .add-button:before{
 
 .msgClass{
     color: #ff0707;
-	position: absolute;
-	top: 26px;
-	display: flex;
-	justify-content: center;
-	font-size: 0.8em;
-	left: 6px;
-	width: 80%;
-
-}
-
-.label{
-	display: flex;
+    position: absolute;
+    top: 16px;
+    padding: 10px;
+    width: 50%;
+    display: flex;
     justify-content: center;
-    align-items: center;
-    width: 33%;
-    color: #939bbe;
-    cursor: pointer;
-}
+    font-size: 0.8em;
+    left: -31px;
+    width:100%;
 
-.checkbox{
-	margin-left: 10px;
-	cursor: pointer;
 }
 
