@@ -189,5 +189,17 @@ main .add-button:before{
 	transform: scale(1);
 }
 
+.msgClass{
+    color: #ff0707;
+    position: absolute;
+    top: 16px;
+    padding: 10px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    font-size: 0.8em;
+    left: -31px;
+    width:100%;
 
+}
 

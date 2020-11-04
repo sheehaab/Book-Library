@@ -1,6 +1,5 @@
 //the array to store all the book object in it
 let myLibrary = [];
-let index = 0;
 
 //declare the place I'll append the new books in it
 const parentBook = document.getElementById('parent-book');
@@ -113,6 +112,7 @@ function display(library){
 }
 
 
+//this to remove the object from the array
 function cancelButton(){
 	const allCancel = document.querySelectorAll('#cancelBtn');
 	allCancel.forEach((cancel)=>{
@@ -133,6 +133,7 @@ function cancelButton(){
 }
 
 
+//this to remove all the nodes from the screen to display the new one
 function removeAllNodes(){
 	while(parentBook.firstChild){
 		parentBook.removeChild(parentBook.firstChild);
@@ -143,12 +144,12 @@ function removeAllNodes(){
 
 //Declration of the add button and the inner button in the form
 const form = document.getElementById('form');
-const add_btn = document.getElementById('add-btn');
+const addNewBookbtn = document.getElementById('add-btn');
 const exit_btn = document.getElementById('exit-btn');
 const addFormButton = document.getElementById('add-button');
 
 //when click the add button show the form 
-add_btn.addEventListener('click',function(){
+addNewBookbtn.addEventListener('click',function(){
 	form.classList.remove('display-none');
 	form.classList.add('display-block');
 	
@@ -165,20 +166,38 @@ exit_btn.addEventListener('click',function(){
 const bookValue = document.getElementById('book-input');
 const pagesValue = document.getElementById('pages-input');
 const authorValue = document.getElementById('author-input');
+const errorMsg = document.getElementById('msg');
+
+
 
 //when click on the add button that in the form 
 addFormButton.addEventListener('click',function clicking(e){
+	let bookVal = bookValue.value;
+	let pagesVal = pagesValue.value;
+	let authorVal = authorValue.value;
 
-	//this to fill the first index in the array to could fill the other index in the array
-	addBookToLibrary(bookValue.value,pagesValue.value,authorValue.value);
-	bookValue.value = '';
-	pagesValue.value = '';
-	authorValue.value = '';
-	form.classList.add('display-none');
-	form.classList.remove('display-block');
-	index+=1;
+	if(bookVal === ''){//check wether the fields is empty or not
+		errorMsg.textContent = '*Book title is Required';
+		return;
+	}else if(pagesVal === ''){
+		errorMsg.textContent = '*Pages number is Required';
+		return;
+	}else if(authorVal === ''){
+		errorMsg.textContent = '*Author name is Required';
+		return;
+	}else if(isNaN(pagesVal)){ // check wether page is number or not
+		errorMsg.textContent = '*Pages must be a number';
+		return;
+	}else{
+		//this to fill the first index in the array to could fill the other index in the array
+		addBookToLibrary(bookVal,pagesVal,authorVal);
+		bookValue.value = '';
+		pagesValue.value = '';
+		authorValue.value = '';
+		form.classList.add('display-none');
+		form.classList.remove('display-block');
+	}
 })
-
 
 
 
