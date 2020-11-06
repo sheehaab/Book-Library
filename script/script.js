@@ -189,10 +189,9 @@ function checkValidate(){
 						let bookName = e.target.parentNode.parentNode.childNodes[2].lastChild.textContent;
 						for(let i=0;i<myLibrary.length;i++){
 							if(myLibrary[i].bookName === bookName){
-								myLibrary.read = check.checked;
-								readit = check.checked = false;
+								myLibrary[i].read = false;
 								check.classList.remove('checked');
-								console.log(check.checked);
+								console.log(myLibrary[i].read);
 								break;
 							}
 					}
@@ -200,10 +199,9 @@ function checkValidate(){
 						let bookName = e.target.parentNode.parentNode.childNodes[2].lastChild.textContent;
 						for(let i=0;i<myLibrary.length;i++){
 							if(myLibrary[i].bookName === bookName){
-								myLibrary.read = check.checked;
-								readit = check.checked = true;
+								myLibrary[i].read = true;
 								check.classList.add('checked');
-								console.log(check.checked);
+								console.log(myLibrary[i].read);
 								break;
 							}
 						}
@@ -235,7 +233,7 @@ addFormButton.addEventListener('click',function clicking(){
 		return;
 	}else{
 		errorMsg.textContent = '';
-		addBookToLibrary(bookVal,pagesVal,authorVal,readit);
+		addBookToLibrary(bookVal,pagesVal,authorVal,false);
 		bookValue.value = '';
 		pagesValue.value = '';
 		authorValue.value = '';
