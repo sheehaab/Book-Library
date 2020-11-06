@@ -1,3 +1,6 @@
+# Book Library
+This project is a simple library for your books, you could add,remove and check wether that you read it or not. you only put the book name,author and pages and then the book will be in your library.
+
 ## Table of contents
 * [General info](#general-info)
 * [Screenshots](#screenshots)
@@ -7,7 +10,6 @@
 * [Inspiration](#inspiration)
 
 ## General info
-This project is a simple library for your books, you could add,remove and check wether that you read it or not. you only put the book name,author and pages and then the book will be in your library.
 I build this project to sharpen my skills with the objects in Vanilla javaScript.
 
 ## Screenshots
