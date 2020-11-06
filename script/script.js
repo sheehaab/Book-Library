@@ -1,8 +1,11 @@
 //the array to store all the book object in it
 let myLibrary = [];
+let counter = 0;
 
 //declare the place I'll append the new books in it
 const parentBook = document.getElementById('parent-book');
+let readit;
+
 
 
 
@@ -19,7 +22,8 @@ function addBookToLibrary(name,pages,author,read){
 	let newBook = new Book(name,pages,author,read);
 	myLibrary.push(newBook);
 	display(myLibrary);
-checkValidate();
+	counter += 1;
+	checkValidate();
 
 }
 
@@ -27,9 +31,7 @@ checkValidate();
 
 function display(library){ 
 
-	removeAllNodes();
-
-	myLibrary.forEach((book)=>{ 
+	for(let i=counter;i<myLibrary.length;i++){
 		//create the main div that will contain all the info about the book
 		const disBook = document.createElement('div');
 		disBook.setAttribute('id','book-obj')
@@ -63,9 +65,9 @@ function display(library){
 		pageTitle.classList.add('span-style');
 		bookTitle.classList.add('span-style');
 		//put the user input into the spans
-		authorTitle.innerHTML = book.bookAuthor;
-		pageTitle.textContent = book.bookPages;
-		bookTitle.textContent = book.bookName;
+		authorTitle.innerHTML = myLibrary[i].bookAuthor;
+		pageTitle.textContent = myLibrary[i].bookPages;
+		bookTitle.textContent = myLibrary[i].bookName;
 
 		//add style to the new created divs
 		disBook.classList.add('book-style');
@@ -80,7 +82,7 @@ function display(library){
 		checkBox.setAttribute('type','checkBox');
 		checkBox.classList.add('checkbox');
 		checkBox.setAttribute('id','javaScriptCheckBox');
-	
+
 
 		//create the cancel button 
 		const cancel = document.createElement('button');
@@ -123,8 +125,10 @@ function display(library){
 
 		//assing this container in the parent div in the actual HTML
 		parentBook.appendChild(disBook);
+		console.log(counter);
 
-	}) 
+
+	}
 	cancelButton();
 
 
@@ -154,15 +158,6 @@ function cancelButton(){
 }
 
 
-//this to remove all the nodes from the screen to display the new one
-function removeAllNodes(){
-	while(parentBook.firstChild){
-		parentBook.removeChild(parentBook.firstChild);
-	}
-}
-
-
-
 //Declration of the add button and the inner button in the form
 const form = document.getElementById('form');
 const addNewBookbtn = document.getElementById('add-btn');
@@ -188,7 +183,6 @@ const bookValue = document.getElementById('book-input');
 const pagesValue = document.getElementById('pages-input');
 const authorValue = document.getElementById('author-input');
 const errorMsg = document.getElementById('msg');
-let readit;
 function checkValidate(){
 	const checkboxjs = document.querySelectorAll('#javaScriptCheckBox');
 
@@ -199,8 +193,9 @@ function checkValidate(){
 						let bookName = e.target.parentNode.parentNode.childNodes[2].lastChild.textContent;
 						for(let i=0;i<myLibrary.length;i++){
 							if(myLibrary[i].bookName === bookName){
-								myLibrary.read = false;
+								myLibrary.read = check.checked;
 								readit = check.checked = false;
+								check.classList.remove('checked');
 								console.log(check.checked);
 								break;
 							}
@@ -209,8 +204,9 @@ function checkValidate(){
 						let bookName = e.target.parentNode.parentNode.childNodes[2].lastChild.textContent;
 						for(let i=0;i<myLibrary.length;i++){
 							if(myLibrary[i].bookName === bookName){
-								myLibrary.read = true;
+								myLibrary.read = check.checked;
 								readit = check.checked = true;
+								check.classList.add('checked');
 								console.log(check.checked);
 								break;
 							}
