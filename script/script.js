@@ -191,7 +191,6 @@ function checkValidate(){
 							if(myLibrary[i].bookName === bookName){
 								myLibrary[i].read = false;
 								check.classList.remove('checked');
-								console.log(myLibrary[i].read);
 								break;
 							}
 					}
@@ -201,7 +200,6 @@ function checkValidate(){
 							if(myLibrary[i].bookName === bookName){
 								myLibrary[i].read = true;
 								check.classList.add('checked');
-								console.log(myLibrary[i].read);
 								break;
 							}
 						}
