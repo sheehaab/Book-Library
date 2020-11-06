@@ -26,7 +26,11 @@ main{
 	flex-direction: column;
 	align-items: center;
 	padding:10px;
-	transition: .5s ease-in-out;
+	transition:all .5s ease-in-out;
+}
+
+main .open-btn-class .arrow{
+	transition:all .5s ease-in-out;
 }
 
 .form-class .exit-btn{
@@ -89,6 +93,7 @@ main .book-obj{
 	-webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.28);
 	-moz-box-shadow:    0px 0px 5px 0px rgba(50, 50, 50, 0.28);
 	box-shadow:         0px 0px 5px 0px rgba(50, 50, 50, 0.28);
+	transition:all .5s ease-in-out;
 }
 
 main .add-button{
@@ -107,6 +112,7 @@ main .add-button{
 	-moz-box-shadow:    0px 0px 5px 0px rgba(50, 50, 50, 0.28);
 	box-shadow:         0px 0px 5px 0px rgba(50, 50, 50, 0.28);
 	cursor: pointer;
+	transition:all .5s ease-in-out;
 
 }
 
@@ -215,3 +221,15 @@ main .add-button:before{
 	cursor: pointer;
 }
 
+main .hide{
+	height:0;
+}
+
+main .none{
+	bottom:250px;
+	visibility: hidden;
+}
+
+main .rotate{
+	transform: rotate(180deg);
+}

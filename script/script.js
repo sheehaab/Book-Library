@@ -242,5 +242,13 @@ addFormButton.addEventListener('click',function clicking(){
 	}
 })
 
+const openCloseBtn = document.getElementById('open-btn');
+const arrow = document.getElementById('arrow');
+
+openCloseBtn.addEventListener('click',function(){
+	parentBook.classList.toggle('hide');
+	addNewBookbtn.classList.toggle('none');
+	arrow.classList.toggle('rotate')
+})
 
 
