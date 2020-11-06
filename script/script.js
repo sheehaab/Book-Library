@@ -125,13 +125,10 @@ function display(library){
 
 		//assing this container in the parent div in the actual HTML
 		parentBook.appendChild(disBook);
-		console.log(counter);
 
 
 	}
 	cancelButton();
-
-
 
 }
 
@@ -143,17 +140,16 @@ function cancelButton(){
 		cancel.addEventListener('click',function(e){
 			e.target.parentElement.remove();
 			let bookName = e.target.parentNode.childNodes[2].lastChild.textContent;
-			let counter = 0;
 			for(let i=0;i<myLibrary.length;i++){
 				if(myLibrary[i].bookName === bookName){
 					myLibrary.splice(i,1);
+					counter-=1;
 					break;
 				}
 			}
 
 		})
 	})
-
 	
 }
 
