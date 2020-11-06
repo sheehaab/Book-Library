@@ -1,6 +1,6 @@
 ## Table of contents
 * [General info](#general-info)
-* [Screemshots](#screenshots)
+* [Screenshots](#screenshots)
 * [Technologies](#technologies)
 * [Setup](#setup)
 * [Features](#features)
